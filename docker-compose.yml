@@ -4,18 +4,22 @@ services:
     image: nginx
     volumes:
       - "./infrastructure/mysite.conf:/etc/nginx/conf.d/000_site.conf"
-      - "./app:/code"
+      - "./app:/var/www/html"
     ports:
-      - "80:80"
+      - "8080:80"
     command: /bin/bash -c "cat /etc/nginx/conf.d/000_site.conf > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
       - php-fpm
+    networks:
+      - nginx:php-net
 
   php-fpm:
     build:
       context: ./infrastructure/docker
     volumes:
-      - "./app:/code"
+      - "./app:/var/www/html"
+    networks:
+      - nginx:php-net
 
   composer:
     image: "composer"
@@ -23,3 +27,6 @@ services:
       - "./app:/app"
     command: install
 
+networks:
+  nginx:php-net:
+    driver: bridge
