@@ -24,7 +24,7 @@ use Exception;
 
 class CsvReviewsRepository implements ReviewsRepositoryInterface
 {
-    private const CSV_PATH = 'reviews.csv';
+    private const CSV_PATH = 'reviews2.csv';
 
     /**
      * @throws Exception
