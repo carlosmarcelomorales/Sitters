@@ -4,14 +4,14 @@ namespace App\Sitter\Domain\Entity;
 
 class RatingsScore
 {
-    private float $ratingsScore;
+    private string $ratingsScore;
 
-    public function __construct(float $ratingsScore)
+    public function __construct(string $ratingsScore)
     {
-        $this->ratingsScore = $ratingsScore;
+        $this->ratingsScore = number_format((float) $ratingsScore, 2, '.', '');
     }
 
-    public function ratingsScore(): float
+    public function ratingsScore(): string
     {
         return $this->ratingsScore;
     }

@@ -40,4 +40,21 @@ class Sitter
         return $this->sitterName;
     }
 
+    public function ratings(): Ratings
+    {
+        return $this->ratings;
+    }
+
+    public function withRatingScore(RatingsScore $ratingsScore): Sitter
+    {
+        return new Sitter(
+            $this->sitterEmail,
+            $this->sitterName,
+            $this->ratings,
+            $this->profileScore,
+            $ratingsScore,
+            $this->searchScore
+        );
+    }
+
 }

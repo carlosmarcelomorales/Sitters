@@ -4,14 +4,14 @@ namespace App\Sitter\Domain\Entity;
 
 class ProfileScore
 {
-    private float $profileScore;
+    private string $profileScore;
 
-    public function __construct(float $profileScore)
+    public function __construct(string $profileScore)
     {
-        $this->profileScore = $profileScore;
+        $this->profileScore = number_format((float) $profileScore, 2, '.', '');;
     }
 
-    public function profileScore(): float
+    public function profileScore(): string
     {
         return $this->profileScore;
     }
