@@ -2,13 +2,11 @@
 
 namespace App\Sitters\Infrastructure\Command;
 
-use App\Review\Application\UseCase\RankingSitters\GenerateRankingSittersUseCase;
+use App\Sitters\Application\UseCase\RankingSitters\GenerateRankingSittersUseCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
-//#[AsCommand(name: 'app:generate-ranking-sitters')]
 class GenerateRankingSitters extends Command
 {
     private GenerateRankingSittersUseCase $generateRankingSittersUseCase;

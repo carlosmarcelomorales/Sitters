@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Review\Application\UseCase\RankingSitters;
+namespace App\Sitters\Application\UseCase\RankingSitters;
 
 use App\Review\Domain\Repository\ReviewsRepositoryInterface;
+use Exception;
 
 class GenerateRankingSittersUseCase
 {
@@ -14,6 +15,11 @@ class GenerateRankingSittersUseCase
 
     public function __invoke()
     {
-        $this->reviewsRepository->read();
+        try {
+            $reviews = $this->reviewsRepository->read();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
     }
 }
