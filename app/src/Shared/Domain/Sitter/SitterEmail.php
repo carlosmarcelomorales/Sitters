@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Review\Domain\Entity\Sitter;
+namespace App\Shared\Domain\Sitter;
 
 class SitterEmail
 {
@@ -11,7 +11,7 @@ class SitterEmail
         $this->sitterEmail = $sitterEmail;
     }
 
-    public function sitterEmail(): string
+    public function value(): string
     {
         return $this->sitterEmail;
     }

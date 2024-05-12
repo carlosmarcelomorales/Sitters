@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Review\Domain\Entity\Sitter;
+namespace App\Shared\Domain\Sitter;
 
 class SitterName
 {
@@ -11,7 +11,7 @@ class SitterName
         $this->sitterName = $sitterName;
     }
 
-    public function sitterName(): string
+    public function value(): string
     {
         return $this->sitterName;
     }

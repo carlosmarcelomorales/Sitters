@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Review\Domain\Entity\Reviews;
+namespace App\Review\Domain\Entity\Review;
 
 use App\Shared\Domain\Read\TypedCollection;
 

@@ -18,6 +18,27 @@ abstract class Collection implements IteratorAggregate
         $this->elements[] = $element;
     }
 
+
+    public function each(callable $fn): void
+    {
+        array_walk($this->elements, $fn);
+    }
+
+    public function map(callable $fn): array
+    {
+        return array_map($fn, $this->elements);
+    }
+
+    public function filter(callable $fn): static
+    {
+        return new static(array_filter($this->elements, $fn, ARRAY_FILTER_USE_BOTH));
+    }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->elements);
+    }
+
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->elements);

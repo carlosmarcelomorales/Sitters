@@ -2,7 +2,7 @@
 
 namespace App\Review\Domain\Repository;
 
-use App\Review\Domain\Entity\Reviews\Reviews;
+use App\Review\Domain\Entity\Review\Reviews;
 
 interface ReviewsRepositoryInterface
 {
