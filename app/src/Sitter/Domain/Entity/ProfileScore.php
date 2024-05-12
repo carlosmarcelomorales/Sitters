@@ -8,10 +8,10 @@ class ProfileScore
 
     public function __construct(string $profileScore)
     {
-        $this->profileScore = number_format((float) $profileScore, 2, '.', '');;
+        $this->profileScore = number_format((float) $profileScore, 2, '.', '');
     }
 
-    public function profileScore(): string
+    public function value(): string
     {
         return $this->profileScore;
     }

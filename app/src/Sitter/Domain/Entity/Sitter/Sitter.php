@@ -40,12 +40,17 @@ class Sitter
         return $this->sitterName;
     }
 
+    public function profileScore(): ProfileScore
+    {
+        return $this->profileScore;
+    }
+
     public function ratings(): Ratings
     {
         return $this->ratings;
     }
 
-    public function withRatingScore(RatingsScore $ratingsScore): Sitter
+    public function withScores(RatingsScore $ratingsScore, SearchScore $searchScore): Sitter
     {
         return new Sitter(
             $this->sitterEmail,
@@ -53,7 +58,7 @@ class Sitter
             $this->ratings,
             $this->profileScore,
             $ratingsScore,
-            $this->searchScore
+            $searchScore
         );
     }
 

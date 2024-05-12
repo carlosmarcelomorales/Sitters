@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rating\Domain\Entity\Rating;
+namespace App\Sitter\Domain\Entity\Rating;
 
 class Rating
 {

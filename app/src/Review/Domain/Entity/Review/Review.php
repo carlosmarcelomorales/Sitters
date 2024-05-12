@@ -2,7 +2,6 @@
 
 namespace App\Review\Domain\Entity\Review;
 
-use App\Rating\Domain\Entity\Rating\Rating;
 use App\Review\Domain\Entity\Dogs;
 use App\Review\Domain\Entity\EndDate;
 use App\Review\Domain\Entity\Owner\OwnerEmail;
@@ -16,6 +15,7 @@ use App\Review\Domain\Entity\StartDate;
 use App\Review\Domain\Entity\Text;
 use App\Shared\Domain\Sitter\SitterEmail;
 use App\Shared\Domain\Sitter\SitterName;
+use App\Sitter\Domain\Entity\Rating\Rating;
 
 class Review
 {

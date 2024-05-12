@@ -44,6 +44,11 @@ abstract class Collection implements IteratorAggregate
         return reset($this->elements);
     }
 
+    public function count(): int
+    {
+        return count($this->elements);
+    }
+
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->elements);

@@ -2,7 +2,6 @@
 
 namespace App\Sitter\Application\Service;
 
-use App\Rating\Application\Service\CalculateRatingScoreService;
 use App\Review\Domain\Entity\Review\Review;
 use App\Review\Domain\Entity\Review\Reviews;
 use App\Shared\Domain\Sitter\SitterName;
@@ -15,9 +14,9 @@ class GetSittersScoreService
 {
     private const NUM_LETTERS_ENG_ALPHABET = 26;
 
-    private CalculateRatingScoreService $calculateRatingScoreService;
+    private CalculateScoresService $calculateRatingScoreService;
 
-    public function __construct(CalculateRatingScoreService $calculateRatingScoreService)
+    public function __construct(CalculateScoresService $calculateRatingScoreService)
     {
         $this->calculateRatingScoreService = $calculateRatingScoreService;
     }
@@ -29,27 +28,19 @@ class GetSittersScoreService
         $reviews->each(function (Review $review) use ($sitters) {
             if ($sitters->isEmpty()) {
                 $sitter = $this->createSitter($review, $review->sitterName());
-
                 $sitters->add($sitter);
-
             } else {
-
                 $sitter = $this->getSitterIfExists($sitters, $review->sitterName());
-
                 if (empty($sitter)) {
-
                     $sitter = $this->createSitter($review, $review->sitterName());
                     $sitters->add($sitter);
-
                 } else {
                     $sitter->ratings()->add($review->rating());
                 }
             }
         });
 
-        $this->calculateRatingScoreService->__invoke($sitters);
-
-        return $sitters;
+        return $this->calculateRatingScoreService->__invoke($sitters);
     }
 
     private function getSitterIfExists(Sitters $sitters, SitterName $sitterName): ?Sitter
@@ -58,11 +49,7 @@ class GetSittersScoreService
             return $sitter->sitterName()->value() == $sitterName->value();
         });
 
-        if (!$existingSitters->isEmpty()) {
-            return $existingSitters->first();
-        }
-
-        return null;
+        return $existingSitters->isEmpty() ? null : $existingSitters->first();
     }
 
     private function createSitter(Review $review, SitterName $sitterName): Sitter
@@ -89,9 +76,7 @@ class GetSittersScoreService
 
         // Transform string to array to delete repetitions
         $nameArray = array_unique(str_split($filteredName));
-
         $numCharacters = count($nameArray);
-
         $profileScore = 5 * ($numCharacters / self::NUM_LETTERS_ENG_ALPHABET);
 
         return new ProfileScore(number_format((float) $profileScore, 2));

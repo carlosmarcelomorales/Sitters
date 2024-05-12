@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Rating\Application\Service;
+namespace App\Sitter\Application\Service;
 
-use App\Rating\Domain\Entity\Rating\Rating;
+use App\Sitter\Domain\Entity\Rating\Rating;
 use App\Sitter\Domain\Entity\RatingsScore;
+use App\Sitter\Domain\Entity\SearchScore;
 use App\Sitter\Domain\Entity\Sitter\Sitter;
 use App\Sitter\Domain\Entity\Sitter\Sitters;
 
-class CalculateRatingScoreService
+class CalculateScoresService
 {
 
     public function __invoke(Sitters $sitters): Sitters
@@ -16,7 +17,9 @@ class CalculateRatingScoreService
 
         $sitters->each(function (Sitter $sitter) use ($updatedSitters) {
             $ratingScore = $this->calculateRatingScore($sitter);
-            $updatedSitters->add($sitter->withRatingScore($ratingScore));
+            $searchScore = $this->calculateSearchScore($sitter, $ratingScore);
+
+            $updatedSitters->add($sitter->withScores($ratingScore, $searchScore));
         });
 
         return $updatedSitters;
@@ -33,5 +36,14 @@ class CalculateRatingScoreService
         });
 
         return new RatingsScore($ratingsSum / $counter);
+    }
+
+    private function calculateSearchScore(Sitter $sitter, RatingsScore $ratingScore): SearchScore
+    {
+        return new SearchScore(
+            $sitter->ratings()->count() < 10
+            ? $sitter->profileScore()->value()
+            : $ratingScore->value()
+    );
     }
 }

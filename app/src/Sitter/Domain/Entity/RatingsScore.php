@@ -11,7 +11,7 @@ class RatingsScore
         $this->ratingsScore = number_format((float) $ratingsScore, 2, '.', '');
     }
 
-    public function ratingsScore(): string
+    public function value(): string
     {
         return $this->ratingsScore;
     }
