@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Sitters\Domain\Entity;
+namespace App\Sitter\Domain\Entity;
 
 class RatingsScore
 {

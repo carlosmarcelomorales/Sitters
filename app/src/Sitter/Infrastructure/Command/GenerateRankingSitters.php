@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Sitters\Infrastructure\Command;
+namespace App\Sitter\Infrastructure\Command;
 
-use App\Sitters\Application\UseCase\RankingSitters\GenerateRankingSittersUseCase;
+use App\Sitter\Application\UseCase\RankingSitters\GenerateRankingSittersUseCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Sitters\Application\Service;
+namespace App\Sitter\Application\Service;
 
 use App\Review\Domain\Entity\Review\Review;
 use App\Review\Domain\Entity\Review\Reviews;
 use App\Shared\Domain\Sitter\SitterName;
-use App\Sitters\Domain\Entity\ProfileScore;
-use App\Sitters\Domain\Entity\Sitter\Sitter;
-use App\Sitters\Domain\Entity\Sitter\Sitters;
+use App\Sitter\Domain\Entity\ProfileScore;
+use App\Sitter\Domain\Entity\Rating\Ratings;
+use App\Sitter\Domain\Entity\Sitter\Sitter;
+use App\Sitter\Domain\Entity\Sitter\Sitters;
 
 class GetSittersScoreService
 {
@@ -42,9 +43,13 @@ class GetSittersScoreService
 
     private function createSitter(Review $review, SitterName $sitterName): Sitter
     {
+        $ratings = new Ratings();
+        dd($review->rating());
+
         return new Sitter(
             $review->sitterEmail(),
             $sitterName,
+            $ratings->add($review->rating()),
             $this->calculateProfileScore($sitterName)
         );
     }

@@ -2,13 +2,13 @@
 
 namespace App\Review\Infrastructure;
 
+use App\Rating\Domain\Entity\Rating\Rating;
 use App\Review\Domain\Entity\Dogs;
 use App\Review\Domain\Entity\EndDate;
 use App\Review\Domain\Entity\Owner\OwnerEmail;
 use App\Review\Domain\Entity\Owner\OwnerImage;
 use App\Review\Domain\Entity\Owner\OwnerName;
 use App\Review\Domain\Entity\Owner\OwnerPhoneNumber;
-use App\Review\Domain\Entity\Rating;
 use App\Review\Domain\Entity\ResponseTimeMinutes;
 use App\Review\Domain\Entity\Review\Review;
 use App\Review\Domain\Entity\Review\Reviews;
@@ -24,7 +24,7 @@ use Exception;
 
 class CsvReviewsRepository implements ReviewsRepositoryInterface
 {
-    private const CSV_PATH = 'reviews2.csv';
+    private const CSV_PATH = 'reviews.csv';
 
     /**
      * @throws Exception

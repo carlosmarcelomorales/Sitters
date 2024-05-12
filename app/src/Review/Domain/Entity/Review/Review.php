@@ -2,13 +2,13 @@
 
 namespace App\Review\Domain\Entity\Review;
 
+use App\Rating\Domain\Entity\Rating\Rating;
 use App\Review\Domain\Entity\Dogs;
 use App\Review\Domain\Entity\EndDate;
 use App\Review\Domain\Entity\Owner\OwnerEmail;
 use App\Review\Domain\Entity\Owner\OwnerImage;
 use App\Review\Domain\Entity\Owner\OwnerName;
 use App\Review\Domain\Entity\Owner\OwnerPhoneNumber;
-use App\Review\Domain\Entity\Rating;
 use App\Review\Domain\Entity\ResponseTimeMinutes;
 use App\Review\Domain\Entity\Sitter\SitterImage;
 use App\Review\Domain\Entity\Sitter\SitterPhoneNumber;
@@ -74,6 +74,11 @@ class Review
     public function sitterName(): SitterName
     {
         return $this->sitterName;
+    }
+
+    public function rating(): Rating
+    {
+        return $this->rating;
     }
 
 

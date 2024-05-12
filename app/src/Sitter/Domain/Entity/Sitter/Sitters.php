@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Sitters\Domain\Entity\Sitter;
+namespace App\Sitter\Domain\Entity\Sitter;
 
 use App\Shared\Domain\Read\TypedCollection;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Sitters\Application\UseCase\RankingSitters;
+namespace App\Sitter\Application\UseCase\RankingSitters;
 
 use App\Review\Domain\Entity\Review\Reviews;
 use App\Review\Domain\Repository\ReviewsRepositoryInterface;
-use App\Sitters\Application\Service\GetSittersScoreService;
+use App\Sitter\Application\Service\GetSittersScoreService;
 use Exception;
 
 class GenerateRankingSittersUseCase
