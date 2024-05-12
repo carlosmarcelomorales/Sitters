@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Application\UseCase\RankingSitters;
+namespace App\Review\Application\UseCase\RankingSitters;
 
-use App\Domain\Repository\ReviewsRepositoryInterface;
+use App\Review\Domain\Repository\ReviewsRepositoryInterface;
 
 class GenerateRankingSittersUseCase
 {

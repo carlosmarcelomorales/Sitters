@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Repository;
+namespace App\Review\Infrastructure;
 
-use App\Domain\Repository\ReviewsRepositoryInterface;
+use App\Review\Domain\Repository\ReviewsRepositoryInterface;
 
 class CsvReviewsRepository implements ReviewsRepositoryInterface
 {

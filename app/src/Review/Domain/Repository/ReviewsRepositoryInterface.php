@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Review\Domain\Repository;
 
 interface ReviewsRepositoryInterface
 {
