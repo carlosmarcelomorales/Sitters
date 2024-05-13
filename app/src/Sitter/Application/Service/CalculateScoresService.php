@@ -40,10 +40,33 @@ class CalculateScoresService
 
     private function calculateSearchScore(Sitter $sitter, RatingsScore $ratingScore): SearchScore
     {
-        return new SearchScore(
-            $sitter->ratings()->count() < 10
-            ? $sitter->profileScore()->value()
-            : $ratingScore->value()
-    );
+        $count = $sitter->ratings()->count();
+
+        switch ($count) {
+            case 0:
+                $result = $sitter->profileScore()->value();
+                break;
+            case $count >= 1 && $count < 10:
+                $result = $this->calculateWeightedAverage(
+                    $sitter->profileScore()->value(),
+                    $count
+                );
+                break;
+            case $count >= 10:
+                $result = $ratingScore->value();
+                break;
+        }
+
+        return new SearchScore($result);
+    }
+
+    private function calculateWeightedAverage(
+        string $profileScore,
+        int $totalRatings
+    ): float
+    {
+        $weightRating = 0.25;
+
+        return (float) $profileScore + ($totalRatings * $weightRating);
     }
 }

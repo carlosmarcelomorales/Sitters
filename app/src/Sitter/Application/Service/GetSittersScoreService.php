@@ -67,7 +67,7 @@ class GetSittersScoreService
 
     private function calculateProfileScore(SitterName $sitterName): ProfileScore
     {
-        // Delete non alphabetical chars
+        // Delete non alphabetical characters
         $filteredName = preg_replace(
             "/[^a-zA-Z]+/", "",
             strtolower($sitterName->value()
