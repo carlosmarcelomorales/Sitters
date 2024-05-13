@@ -29,7 +29,14 @@ class GenerateRankingSitters extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->generateRankingSittersUseCase->__invoke();
-        return Command::SUCCESS;
+        $result = $this->generateRankingSittersUseCase->__invoke();
+
+        if ($result) {
+            $output->writeln('Ranking of sitters was successfully created!!!');
+            return Command::SUCCESS;
+        }
+
+        $output->writeln('There was a problem with creating ranking sitters');
+        return Command::FAILURE;
     }
 }

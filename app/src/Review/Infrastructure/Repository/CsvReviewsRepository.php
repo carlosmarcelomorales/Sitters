@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Review\Infrastructure;
+namespace App\Review\Infrastructure\Repository;
 
 use App\Review\Domain\Entity\Dogs;
 use App\Review\Domain\Entity\EndDate;

@@ -5,6 +5,7 @@ namespace App\Sitter\Application\Service;
 use App\Shared\Domain\Sitter\SitterEmail;
 use App\Shared\Domain\Sitter\SitterName;
 use App\Sitter\Domain\Entity\ProfileScore;
+use App\Sitter\Domain\Entity\Rating\Rating;
 use App\Sitter\Domain\Entity\Rating\Ratings;
 use App\Sitter\Domain\Entity\RatingsScore;
 use App\Sitter\Domain\Entity\SearchScore;
@@ -32,23 +33,13 @@ class SortSittersService
         return $this->createOrderedSitters($sittersArray);
     }
 
-    private function getRatings($sitter, Ratings $ratings): Ratings
-    {
-       array_map(
-           fn ($rating) => $ratings->add($rating['rating']),
-           $sitter['ratings']
-       );
-
-       return $ratings;
-    }
-
     public function createOrderedSitters(array $sittersArray): Sitters
     {
         $sortedSitters = new Sitters();
 
         array_map(function ($sitter) use ($sortedSitters) {
             $ratings = new Ratings();
-            new Sitter(
+            $sitter = new Sitter(
                 new SitterEmail($sitter["sitterEmail"]),
                 new SitterName($sitter["sitterName"]),
                 $this->getRatings($sitter, $ratings),
@@ -58,7 +49,18 @@ class SortSittersService
             );
             $sortedSitters->add($sitter);
         }, $sittersArray);
+
         return $sortedSitters;
+    }
+
+    private function getRatings($sitter, Ratings $ratings): Ratings
+    {
+        array_map(
+            fn ($rating) => $ratings->add(new Rating($rating['rating'])),
+            $sitter['ratings']
+        );
+
+        return $ratings;
     }
 
 }
