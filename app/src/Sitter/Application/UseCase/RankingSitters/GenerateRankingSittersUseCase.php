@@ -29,8 +29,10 @@ class GenerateRankingSittersUseCase
     public function __invoke(): Sitters
     {
         $reviews = $this->getReviews();
-        $sitters = $this->getSittersScoreService->__invoke($reviews);
-        $this->sortSittersService->__invoke($sitters);
+        $sitters = $this->sortSittersService->__invoke(
+            $this->getSittersScoreService->__invoke($reviews)
+        );
+
     }
 
 
