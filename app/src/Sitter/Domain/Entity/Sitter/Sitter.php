@@ -5,6 +5,7 @@ namespace App\Sitter\Domain\Entity\Sitter;
 use App\Shared\Domain\Sitter\SitterEmail;
 use App\Shared\Domain\Sitter\SitterName;
 use App\Sitter\Domain\Entity\ProfileScore;
+use App\Sitter\Domain\Entity\Rating\Rating;
 use App\Sitter\Domain\Entity\Rating\Ratings;
 use App\Sitter\Domain\Entity\RatingsScore;
 use App\Sitter\Domain\Entity\SearchScore;
@@ -45,6 +46,11 @@ class Sitter
         return $this->profileScore;
     }
 
+    public function searchScore(): SearchScore
+    {
+        return $this->searchScore;
+    }
+
     public function ratings(): Ratings
     {
         return $this->ratings;
@@ -60,6 +66,18 @@ class Sitter
             $ratingsScore,
             $searchScore
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'sitterEmail' => $this->sitterEmail->value(),
+            'sitterName' => $this->sitterName->value(),
+            'ratings' => $this->ratings->map(fn (Rating $rating) => $rating->toArray()),
+            'profileScore' => $this->profileScore->value(),
+            'ratingsScore' => $this->ratingsScore->value(),
+            'searchScore' => $this->searchScore->value(),
+        ];
     }
 
 }

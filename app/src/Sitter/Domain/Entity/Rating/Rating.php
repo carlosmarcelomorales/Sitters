@@ -15,4 +15,11 @@ class Rating
     {
         return $this->rating;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'rating' => $this->rating,
+        ];
+    }
 }
