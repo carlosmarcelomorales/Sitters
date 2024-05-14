@@ -116,3 +116,21 @@ When you're done with the project, compress your project directory into a Zip fi
 **Lastly:** The work you create here should be representative of code that we'd expect to
 receive from you if you were hired tomorrow (proper abstractions, tests
 for the scoring algorithm calculation, best practices, etc). 
+
+
+# How to use?
+Read the `HowToUse.md` file.
+
+## Discussion question
+
+### How would you adjust the calculation and storage of search scores in a production application?
+
+I would definitely do it asynchronous. Instead of calculating the scores in a loop for every sitter, I would post 
+an event in a queue ( with Rabbit.mq, for instance) that can read it and do the proper calculations. 
+
+This way, the main process will save the info of the sitters on some database, while the scores are being calculated
+simultaneously. When we already have the results of the scores, it would update the information of the sitters on the
+database.
+
+By doing it this way, we could have a small delay while we take the info of the sitters, because it might be that it's
+not completed, but the server process will breathe smoother, it would make it to perform much better.
