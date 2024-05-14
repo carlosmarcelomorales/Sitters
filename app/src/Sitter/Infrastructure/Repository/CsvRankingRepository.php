@@ -14,7 +14,6 @@ class CsvRankingRepository implements RankingRepositoryInterface
     public function create(Sitters $sitters): bool
     {
         $file = fopen(self::FILENAME, 'w');
-
         if ($file === false) {
             throw new Exception('Unable to open file.');
         }

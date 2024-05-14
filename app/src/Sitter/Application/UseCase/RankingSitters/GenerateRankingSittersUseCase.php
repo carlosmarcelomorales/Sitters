@@ -44,13 +44,12 @@ class GenerateRankingSittersUseCase
         }
     }
 
-
     private function getReviews(): Reviews
     {
         try {
             return $this->reviewsRepository->read();
         } catch (Exception $e) {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 }

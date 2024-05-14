@@ -27,7 +27,6 @@ class SortSittersService
             } else {
                 return strcmp($a["sitterName"], $b["sitterName"]);
             }
-
         });
 
         return $this->createOrderedSitters($sittersArray);
