@@ -1,6 +1,6 @@
-# Rover Coding Project
+# Coding Project
 
-Rover.com was destroyed in a terrible Amazon Web Services and GitHub accident!
+Our project was destroyed in a terrible Amazon Web Services and GitHub accident!
 Thankfully, no dogs were harmed, but we will have to rebuild our site using
 data we retrieved from the Google search index. 
 
@@ -30,7 +30,7 @@ reviews customers have left for their stays with sitters.
 
 We have saved that information in the attached CSV.
 
-Your command-line program should import the data to hold in memory (no need to use an actual database) and use it to recreate our search algorithm. At Rover, we write domain-driven code, so using an Object Oriented or other domain-centric approach will set you up for success in the in person interview. For example, one viable approach is modeling your data as if you were going to save it using a relational database.
+Your command-line program should import the data to hold in memory (no need to use an actual database) and use it to recreate our search algorithm. We write domain-driven code, so using an Object Oriented or other domain-centric approach will set you up for success in the in person interview. For example, one viable approach is modeling your data as if you were going to save it using a relational database.
 
 If you are using a language that doesn't traditionally use an OO or domain-centric approach, please discuss this with the person who sent you this prompt in advance of beginning work, in order to have the best chance of success if you advance to the in person interview.
 
@@ -88,7 +88,7 @@ Suppose there is a sitter whose Profile Score is 2.5 and who gets a rating of
 
 ## Discussion Question
 
-Imagine you are designing a Rover-like production web application based on the exercise you've just completed. The application will compute the search scores
+Imagine you are designing a production web application based on the exercise you've just completed. The application will compute the search scores
 for sitters, return a list of search results based on those scores, and display them to the user through a web UI. Please answer **ONE** of the following discussion questions about the approach you'd take:
 
 - How would you adjust the calculation and storage of search scores in a production application?
